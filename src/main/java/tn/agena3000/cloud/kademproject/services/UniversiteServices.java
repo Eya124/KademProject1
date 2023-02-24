@@ -12,4 +12,5 @@ public interface UniversiteServices {
     List<Universite> getAll();
     Universite getByID(Integer id);
     void deleteUniversite(Integer id);
+    public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement);
 }

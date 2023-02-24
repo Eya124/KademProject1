@@ -18,7 +18,7 @@ public class Etudiant {
     private int idEtudiant;
     private String prenomE;
     private String nomE;
-    private Option option;
+    //private Option option;
     @OneToMany(mappedBy = "etudiant")
     List<Contrat> contrat;
     @ManyToOne
