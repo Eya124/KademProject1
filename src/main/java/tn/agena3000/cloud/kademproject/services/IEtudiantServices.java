@@ -11,5 +11,6 @@ public interface IEtudiantServices {
     Etudiant getByID(Integer id);
     void deleteEtudiant(Integer id);
     void assugnEtudiantToDepartement(Integer etudiantId,Integer departemenId);
+    Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe);
 
 }

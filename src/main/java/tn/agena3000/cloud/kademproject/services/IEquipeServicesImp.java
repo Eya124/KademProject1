@@ -1,5 +1,6 @@
 package tn.agena3000.cloud.kademproject.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.agena3000.cloud.kademproject.Equipe;
 import tn.agena3000.cloud.kademproject.Etudiant;
@@ -9,6 +10,8 @@ import tn.agena3000.cloud.kademproject.repositories.EtudiantRepository;
 import java.util.List;
 @Service
 public class IEquipeServicesImp implements IEquipeServices{
+
+    @Autowired
     private EquipeRepository equipeRepository;
     @Override
     public void ajouterEquipe(Equipe e) {

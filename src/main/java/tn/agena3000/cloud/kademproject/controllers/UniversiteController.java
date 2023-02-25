@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.agena3000.cloud.kademproject.Etudiant;
 import tn.agena3000.cloud.kademproject.Universite;
+import tn.agena3000.cloud.kademproject.repositories.UniversiteRepository;
 import tn.agena3000.cloud.kademproject.services.IEtudiantServices;
 import tn.agena3000.cloud.kademproject.services.UniversiteServices;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public class UniversiteController {
     @Autowired
     UniversiteServices universiteServices;
+    private final UniversiteRepository universiteRepository;
+
     @GetMapping("/getALLUniversite")
     public List<Universite> getAll(){
         return universiteServices.getAll();
@@ -37,5 +40,10 @@ public class UniversiteController {
         universiteServices.updateUniversite(universite);
         return universite;
     }
+    @PutMapping("/{idUniversite}/{idDepartement}")
+    public void assignUniversiteToDepartement(@PathVariable Integer idUniversite, @PathVariable Integer idDepartement) {
+        universiteServices.assignUniversiteToDepartement(idUniversite,idDepartement);
+    }
 
-}
+
+    }

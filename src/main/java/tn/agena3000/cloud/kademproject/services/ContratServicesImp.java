@@ -1,5 +1,6 @@
 package tn.agena3000.cloud.kademproject.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.agena3000.cloud.kademproject.Contrat;
 import tn.agena3000.cloud.kademproject.repositories.ContratRepository;
@@ -9,6 +10,8 @@ import java.util.List;
 
 @Service
 public class ContratServicesImp implements ContratServices{
+
+    @Autowired
     private ContratRepository contratRepository;
 
 

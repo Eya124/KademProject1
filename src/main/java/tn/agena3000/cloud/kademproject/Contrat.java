@@ -1,10 +1,9 @@
 package tn.agena3000.cloud.kademproject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 @Getter
 @Setter
@@ -14,6 +13,8 @@ import java.util.Date;
 
 public class Contrat {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer idContrat ;
     private Date dateDebutContrat;
     private Date dateFinContrat ;
@@ -21,6 +22,7 @@ public class Contrat {
     private Boolean archive;
     private Integer montantContrat;
     @ManyToOne
+    @JsonIgnore
     Etudiant etudiant;
 
 

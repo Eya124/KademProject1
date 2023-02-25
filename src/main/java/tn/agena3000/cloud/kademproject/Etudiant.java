@@ -14,7 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Etudiant {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEtudiant;
     private String prenomE;
     private String nomE;
