@@ -5,4 +5,5 @@ import tn.agena3000.cloud.kademproject.Contrat;
 import tn.agena3000.cloud.kademproject.Departement;
 
 public interface ContratRepository extends JpaRepository<Contrat,Integer> {
+
 }

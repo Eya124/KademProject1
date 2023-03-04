@@ -31,7 +31,6 @@ public class EtudiantController {
     public Etudiant getById(@PathVariable int id){
         return iEtudiantServices.getByID(id);
     }
-
     @PostMapping ("/AddEtudiant")
     public void ADDEtudiant(@RequestBody Etudiant etudiant){
         iEtudiantServices.ajouterEtudiant(etudiant);

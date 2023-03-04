@@ -12,5 +12,7 @@ public interface ContratServices {
     List<Contrat> getAll();
     Contrat  getByID(Integer id);
     void deleteContrat(Integer id);
+    Contrat affectContratToEtudiant (Contrat ce, String nom , String prenomE);
+
 }
 

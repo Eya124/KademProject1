@@ -1,5 +1,6 @@
 package tn.agena3000.cloud.kademproject.services;
 
+import tn.agena3000.cloud.kademproject.Contrat;
 import tn.agena3000.cloud.kademproject.Etudiant;
 
 import java.util.List;
