@@ -1,5 +1,6 @@
 package tn.agena3000.cloud.kademproject.services;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -104,23 +105,30 @@ public class ContratServicesImp implements ContratServices{
     @Override
     @Scheduled(cron = "0 0 13 * * ?")
     public String retrieveAndUpdateStatusContrat() {
-        LocalDate date = LocalDate.now();
-        LocalDate datefin =date.plusDays(15);
+        /*LocalDate date = LocalDate.now();
+        LocalDate datefin =date.plusDays(15);*/
+        Date date = new Date();
+        Date datefin = DateUtils.addDays(date, 15);
+
         List <Contrat> listC = new ArrayList<>();
+        List <Contrat> listR = new ArrayList<>();
+
         listC.addAll(contratRepository.findAllByArchiveIsFalse());
         for(Contrat c:listC) {
             if (c.getDateFinContrat().before(date) ){
                 c.setArchive(true);
                 contratRepository.save(c);
         }
-            else {
+            else if (c.getDateFinContrat().after(date) && c.getDateFinContrat().before(datefin))
+            {listR.add(c); }
 
 
             }
-        }
 
-        return null;
-    }
+                    return listR.toString();
+
+
+}
 
 
 
