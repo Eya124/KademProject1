@@ -2,7 +2,9 @@ package tn.agena3000.cloud.kademproject.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
+import tn.agena3000.cloud.kademproject.Departement;
 import tn.agena3000.cloud.kademproject.Etudiant;
 import tn.agena3000.cloud.kademproject.repositories.EquipeRepository;
 import tn.agena3000.cloud.kademproject.repositories.EtudiantRepository;
@@ -39,6 +41,10 @@ public class EtudiantController {
     public Etudiant addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant e, @PathVariable Integer idContrat, @PathVariable Integer idEquipe) {
        return iEtudiantServices.addAndAssignEtudiantToEquipeAndContract(e,idContrat,idEquipe);
 
+    }
+    @GetMapping("/getEtudDep/{idDep}")
+    public List<Etudiant> getEtudiantsByDepartement(@RequestBody Integer idDepartement) {
+        return iEtudiantServices.getEtudiantsByDepartement(idDepartement);
     }
 
 

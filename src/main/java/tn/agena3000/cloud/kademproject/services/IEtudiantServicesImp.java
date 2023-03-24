@@ -22,9 +22,9 @@ public class IEtudiantServicesImp implements IEtudiantServices{
 
     @Autowired
     private EtudiantRepository etudiantRepository;
-    private DepartementRepository departementRepository;
     private final ContratRepository contratRepository;
     private final EquipeRepository equipeRepository;
+    private final DepartementRepository departementRepository;
 
     @Override
     public void ajouterEtudiant(Etudiant e) {
@@ -96,7 +96,12 @@ public class IEtudiantServicesImp implements IEtudiantServices{
 
     }
 
-
+    @Override
+    public List<Etudiant> getEtudiantsByDepartement(Integer idDepartement) {
+        Departement departement = departementRepository.findById(idDepartement).orElse(null);
+        Assert.notNull(departement, "departement must not be null.") ;
+        return departement.getEtudiants();
+    }
 
 
 

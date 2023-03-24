@@ -5,10 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import tn.agena3000.cloud.kademproject.Contrat;
 import tn.agena3000.cloud.kademproject.Etudiant;
+import tn.agena3000.cloud.kademproject.Specialite;
 import tn.agena3000.cloud.kademproject.repositories.ContratRepository;
 import tn.agena3000.cloud.kademproject.repositories.EtudiantRepository;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ContratServicesImp implements ContratServices{
@@ -60,5 +61,30 @@ public class ContratServicesImp implements ContratServices{
             etudiantRepository.save(etudiant);
             return contrat;
 
+    }
+
+    @Override
+    public Map<String, Float> getMontantContartEntreDeuxDate(int idUniv, Date startDate, Date endDate) {
+        List <Contrat> listC = new ArrayList<>();
+        Map<String,Float> mapc= new HashMap<>();
+        String specialite;
+        float montant;
+        listC.addAll(contratRepository.findAll());
+        for(Contrat c:listC) {
+            if (c.getDateFinContrat().before(startDate) || c.getDateDebutContrat().after(endDate))
+                listC.remove(c);
+            else{
+                specialite = c.getSpecialite().toString();
+                montant = mapc.getOrDefault(specialite, 0f);
+                mapc.put(specialite, montant);
+            }
+
+        }
+
+
+
+
+
+        return mapc;
     }
 }

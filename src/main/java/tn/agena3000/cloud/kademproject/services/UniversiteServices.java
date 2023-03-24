@@ -1,5 +1,6 @@
 package tn.agena3000.cloud.kademproject.services;
 
+import tn.agena3000.cloud.kademproject.Departement;
 import tn.agena3000.cloud.kademproject.Etudiant;
 import tn.agena3000.cloud.kademproject.Universite;
 import tn.agena3000.cloud.kademproject.repositories.UniversiteRepository;
@@ -13,4 +14,5 @@ public interface UniversiteServices {
     Universite getByID(Integer id);
     void deleteUniversite(Integer id);
     public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement);
+    List<Departement> retrieveDepartementsByUniversite(Integer idUniversite);
 }
