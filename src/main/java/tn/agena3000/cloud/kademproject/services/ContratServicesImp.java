@@ -1,6 +1,7 @@
 package tn.agena3000.cloud.kademproject.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import tn.agena3000.cloud.kademproject.Contrat;
@@ -9,6 +10,7 @@ import tn.agena3000.cloud.kademproject.Specialite;
 import tn.agena3000.cloud.kademproject.repositories.ContratRepository;
 import tn.agena3000.cloud.kademproject.repositories.EtudiantRepository;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -87,4 +89,39 @@ public class ContratServicesImp implements ContratServices{
 
         return mapc;
     }
+
+    @Override
+    public Integer nbContratsValides(Date startDate, Date endDate) {
+        List <Contrat> listC = new ArrayList<>();
+        listC.addAll(contratRepository.findAllByArchiveIsFalse());
+        for(Contrat c:listC) {
+            if (c.getDateFinContrat().before(startDate) || c.getDateDebutContrat().after(endDate))
+                listC.remove(c);}
+
+        return listC.size();
+    }
+
+    @Override
+    @Scheduled(cron = "0 0 13 * * ?")
+    public String retrieveAndUpdateStatusContrat() {
+        LocalDate date = LocalDate.now();
+        LocalDate datefin =date.plusDays(15);
+        List <Contrat> listC = new ArrayList<>();
+        listC.addAll(contratRepository.findAllByArchiveIsFalse());
+        for(Contrat c:listC) {
+            if (c.getDateFinContrat().before(date) ){
+                c.setArchive(true);
+                contratRepository.save(c);
+        }
+            else {
+
+
+            }
+        }
+
+        return null;
+    }
+
+
+
 }
