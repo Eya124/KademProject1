@@ -51,7 +51,7 @@ public class ContratController {
     Integer nbContratsValides(Date startDate, Date endDate){
         return contratServices.nbContratsValides(startDate,endDate);
     };
-    @GetMapping("/scheduler")
+    @PostMapping("/scheduler")
 
     String retrieveAndUpdateStatusContrat(){
         return contratServices.retrieveAndUpdateStatusContrat();
