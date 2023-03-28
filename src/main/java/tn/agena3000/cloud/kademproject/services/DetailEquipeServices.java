@@ -12,4 +12,5 @@ public interface DetailEquipeServices {
     List<DetailEquipe > getAll();
     DetailEquipe  getByID(Integer id);
     void deleteDetailEquipe(Integer id);
+
 }

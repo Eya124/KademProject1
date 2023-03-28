@@ -37,4 +37,6 @@ public class DetailEquipeServicesImp implements DetailEquipeServices{
         detailEquipeRepository.deleteById(id);
 
     }
+
+
 }

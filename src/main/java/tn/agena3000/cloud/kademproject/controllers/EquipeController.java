@@ -25,13 +25,17 @@ public class EquipeController {
     private void deleteEquipe(@PathVariable int id){
         iEquipeServices.deleteEquipe(id);
     }
-    @PostMapping
+    @PostMapping("/ajout")
     public void ajouterEquipe(@RequestBody Equipe equipe){
         iEquipeServices.ajouterEquipe(equipe);
     }
-    @PutMapping()
+    @PutMapping("/update")
     private Equipe updateEquipe(@RequestBody Equipe equipe){
         iEquipeServices.updateEquipe(equipe);
         return equipe;
+    }
+    @PostMapping("/evoluer")
+    public void faireEvoluerEquipes(){
+        iEquipeServices.faireEvoluerEquipes();
     }
 }
